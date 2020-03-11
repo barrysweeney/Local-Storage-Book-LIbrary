@@ -1,4 +1,4 @@
-let myLibrary;
+let myLibrary = [];
 let booksInLibrary;
 let bookForm = document.getElementById("bookForm");
 let bookDisplay = document.getElementById("bookContainer");
