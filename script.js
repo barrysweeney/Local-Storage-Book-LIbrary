@@ -3,6 +3,15 @@ let booksInLibrary;
 let bookForm = document.getElementById("bookForm");
 let bookDisplay = document.getElementById("bookContainer");
 
+class Book {
+  constructor(title, author, numPages, isRead) {
+    this.title = title;
+    this.author = author;
+    this.numPages = numPages;
+    this.isRead = isRead;
+  }
+}
+
 window.onload = startUp();
 
 function startUp() {
@@ -13,7 +22,9 @@ function startUp() {
 
 // gets created books from local storage
 function getMyLibrary() {
+  if(JSON.parse(localStorage.getItem("myLibrary")) !== null){
   myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+  }
 }
 
 // add form buttons and hide form
@@ -26,11 +37,7 @@ function setupForm() {
 }
 
 function toggleFormDisplay() {
-  if (bookForm.style.display === "none") {
-    bookForm.style.display = "block";
-  } else {
-    bookForm.style.display = "none";
-  }
+  bookForm.style.display = "block";
 }
 
 function submitForm() {
@@ -63,12 +70,7 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
-function Book(title, author, numPages, isRead) {
-  this.title = title;
-  this.author = author;
-  this.numPages = numPages;
-  this.isRead = isRead;
-}
+
 
 function render() {
   alterHTMLforBooks();
