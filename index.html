@@ -17,11 +17,14 @@
         <div id="bookContainer"></div>
         <form id="bookForm" class="form-group">
             <label for="title">Title:</label><br />
-            <input type="text" id="title" name="title" /><br />
+            <input type="text" id="title" name="title"/>
+            <span id="titleError" aria-live="polite"></span><br />
             <label for="author">Author:</label><br />
-            <input type="text" id="author" name="author" /><br />
+            <input type="text" id="author" name="author" />
+            <span id="authorError" aria-live="polite"></span><br />
             <label for="pages">Pages:</label><br />
-            <input type="text" id="pages" name="pages" /><br />
+            <input type="text" id="pages" name="pages" />
+            <span id="pagesError" aria-live="polite"></span><br />
         </form>
         <button id="submitForm" class="btn btn-secondary">Submit</button>
         <button id="addBook" class="btn btn-secondary">New Book</button>

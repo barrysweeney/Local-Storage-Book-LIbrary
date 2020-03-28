@@ -22,18 +22,17 @@ function startUp() {
 
 // gets created books from local storage
 function getMyLibrary() {
-  if(JSON.parse(localStorage.getItem("myLibrary")) !== null){
-  myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+  if (JSON.parse(localStorage.getItem("myLibrary")) !== null) {
+    myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
   }
 }
 
-// add form buttons and hide form
+// add form buttons
 function setupForm() {
   let addBookButton = document.getElementById("addBook");
   let submitButton = document.getElementById("submitForm");
   addBookButton.addEventListener("click", toggleFormDisplay);
   submitButton.addEventListener("click", submitForm);
-  toggleFormDisplay();
 }
 
 function toggleFormDisplay() {
@@ -46,6 +45,8 @@ function submitForm() {
     let book = new Book(title, author, pages, read);
     addBookToLibrary(book);
     render();
+  } else {
+    showErrorMessage();
   }
 }
 
@@ -70,14 +71,34 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
-
-
 function render() {
   alterHTMLforBooks();
   bookForm.reset();
   addReadButtons();
   addDeleteButtons();
   addBookLibraryToLocalStorage();
+}
+
+function showErrorMessage() {
+  let title = document.getElementById("title");
+  let author = document.getElementById("author");
+  let pages = document.getElementById("pages");
+
+  if (title.value.length === 0) {
+    let titleError = document.getElementById("titleError");
+    titleError.textContent = "Please fill in this field";
+    title.style.border = "1px solid red";
+  }
+  if (author.value.length === 0) {
+    let authorError = document.getElementById("authorError");
+    authorError.textContent = "Please fill in this field";
+    author.style.border = "1px solid red";
+  }
+  if (pages.value.length === 0) {
+    let pagesError = document.getElementById("pagesError");
+    pagesError.textContent = "Please fill in this field";
+    pages.style.border = "1px solid red";
+  }
 }
 
 // displays created books

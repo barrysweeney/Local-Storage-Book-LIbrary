@@ -5,3 +5,7 @@
 .card{
     margin-bottom: 0.5em;
 }
+
+#bookForm{
+    display: none;
+}
